@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useBikeState } from './hooks/useBikeState';
 import Dashboard from './components/Dashboard';
 import RefuelHistory from './components/RefuelHistory';
@@ -10,6 +10,21 @@ type View = 'dashboard' | 'history' | 'settings';
 const App: React.FC = () => {
   const [view, setView] = useState<View>('dashboard');
   const bikeState = useBikeState();
+
+  useEffect(() => {
+    const setViewportHeight = () => {
+      // We execute the inner function and multiply by 0.01 to get a value for a single vh unit
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    window.addEventListener('resize', setViewportHeight);
+    setViewportHeight(); // Set the initial value
+
+    // Cleanup listener on component unmount
+    return () => window.removeEventListener('resize', setViewportHeight);
+  }, []);
+
 
   const renderView = () => {
     switch (view) {
@@ -53,7 +68,7 @@ const App: React.FC = () => {
   );
 
   return (
-    <div className="h-full bg-black text-gray-200 font-mono flex flex-col items-center justify-center p-2 sm:p-4">
+    <div className="h-screen-dynamic bg-black text-gray-200 font-mono flex flex-col items-center justify-center p-2 sm:p-4">
       <div className="w-full max-w-lg h-full max-h-[850px] bg-gray-900/50 rounded-3xl border-4 border-gray-700/50 shadow-2xl shadow-cyan-500/10 flex flex-col overflow-hidden">
         <header className="flex items-center justify-between p-4 border-b-2 border-gray-700/50">
           <div className="flex items-center space-x-2">

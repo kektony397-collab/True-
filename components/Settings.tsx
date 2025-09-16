@@ -96,4 +96,4 @@ const Settings: React.FC<SettingsProps> = ({ settings, onUpdate }) => {
   );
 };
 
-export default Settings;
+export default React.memo(Settings);

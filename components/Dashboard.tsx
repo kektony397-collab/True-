@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BikeState } from '../types';
 import Speedometer from './Speedometer';
@@ -37,4 +36,4 @@ const Dashboard: React.FC<BikeState> = (props) => {
   );
 };
 
-export default Dashboard;
+export default React.memo(Dashboard);

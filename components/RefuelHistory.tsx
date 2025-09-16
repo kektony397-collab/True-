@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { RefuelRecord } from '../types';
 import { LoadingSpinner } from './icons/Icons';
@@ -32,9 +31,13 @@ const RefuelHistory: React.FC<RefuelHistoryProps> = ({ records, onAddRecord, aiA
             type="text"
             value={nlpInput}
             onChange={(e) => setNlpInput(e.target.value)}
-            placeholder="e.g., 'filled up for 20 dollars' or '5.5L'"
+            placeholder="e.g., 'filled up' or '5.5L'"
             className="flex-grow bg-gray-800 border border-gray-600 rounded-md px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
             disabled={loadingNlp}
+            autoComplete="off"
+            autoCapitalize="none"
+            autoCorrect="off"
+            spellCheck="false"
           />
           <button
             type="submit"
@@ -82,4 +85,4 @@ const RefuelHistory: React.FC<RefuelHistoryProps> = ({ records, onAddRecord, aiA
   );
 };
 
-export default RefuelHistory;
+export default React.memo(RefuelHistory);
