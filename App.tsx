@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useBikeState } from './hooks/useBikeState';
 import Dashboard from './components/Dashboard';
@@ -54,8 +53,8 @@ const App: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-black text-gray-200 font-mono flex flex-col items-center justify-center p-2 sm:p-4">
-      <div className="w-full max-w-lg aspect-[9/18] sm:aspect-[9/16] bg-gray-900/50 rounded-3xl border-4 border-gray-700/50 shadow-2xl shadow-cyan-500/10 flex flex-col overflow-hidden">
+    <div className="h-full bg-black text-gray-200 font-mono flex flex-col items-center justify-center p-2 sm:p-4">
+      <div className="w-full max-w-lg h-full max-h-[850px] bg-gray-900/50 rounded-3xl border-4 border-gray-700/50 shadow-2xl shadow-cyan-500/10 flex flex-col overflow-hidden">
         <header className="flex items-center justify-between p-4 border-b-2 border-gray-700/50">
           <div className="flex items-center space-x-2">
             <FlameIcon className="w-6 h-6 text-cyan-400" />

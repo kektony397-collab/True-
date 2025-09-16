@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Settings as SettingsType } from '../types';
 
@@ -36,7 +35,8 @@ const Settings: React.FC<SettingsProps> = ({ settings, onUpdate }) => {
     type: string;
     value: string | number;
     step?: string;
-  }> = ({ label, name, type, value, step }) => (
+    inputMode?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search';
+  }> = ({ label, name, type, value, step, inputMode }) => (
     <div>
       <label htmlFor={name} className="block text-sm font-medium text-cyan-400">
         {label}
@@ -49,6 +49,7 @@ const Settings: React.FC<SettingsProps> = ({ settings, onUpdate }) => {
           value={value}
           onChange={handleChange}
           step={step}
+          inputMode={inputMode}
           className="w-full bg-gray-800 border border-gray-600 rounded-md px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
         />
       </div>
@@ -71,6 +72,7 @@ const Settings: React.FC<SettingsProps> = ({ settings, onUpdate }) => {
           type="number"
           value={formState.tankCapacityL}
           step="0.1"
+          inputMode="decimal"
         />
         <InputField
           label="Avg. Fuel Economy (km/L)"
@@ -78,6 +80,7 @@ const Settings: React.FC<SettingsProps> = ({ settings, onUpdate }) => {
           type="number"
           value={formState.fuelEconomyKmPerL}
           step="1"
+          inputMode="decimal"
         />
         
         <div>
